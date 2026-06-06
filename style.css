@@ -1,0 +1,72 @@
+:root {
+  --clr-neutral-100: hsl(210, 20%, 98%);
+  --clr-neutral-200: hsl(225, 20%, 96%);
+  --clr-neutral-300: hsl(60, 4%, 85%);
+  --clr-neutral-500: hsl(60, 4%, 16%);
+  --clr-neutral-600: hsl(60, 6%, 13%);
+  --clr-neutral-700: hsl(218, 22%, 10%);
+
+  --clr-primary-100: hsl(278, 100, 83);
+  --clr-primary-300: hsl(273, 68, 59);
+  --clr-primary-800: hsl(262, 100, 8);
+
+  --clr-secondary-400: hsl(152, 41, 52);
+
+  --clr-gradient: linear-gradient(90deg, red -50%, blue 150%);
+
+  --fw-regular: 400;
+  --fw-bold: 700;
+
+  --ff-primary: "Klee One", cursive;
+  --ff-secondary: "Google Sans", sans-serif;
+  --ff-accent: "Shantell Sans", cursive;
+
+  --fs-300: clamp(0.9375rem, 0.6665rem + 1.2045vw, 1.6rem);
+  --fs-400: clamp(1.125rem, 0.767rem + 1.5909vw, 2rem);
+  --fs-500: clamp(1.35rem, 0.8795rem + 2.0909vw, 2.5rem);
+  --fs-600: clamp(1.62rem, 1.0043rem + 2.7364vw, 3.125rem);
+  --fs-700: clamp(1.944rem, 1.1413rem + 3.5677vw, 3.9063rem);
+  --fs-800: clamp(2.3328rem, 1.2896rem + 4.6364vw, 4.8828rem);
+  --fs-900: clamp(2.7994rem, 1.4477rem + 6.0076vw, 6.1035rem);
+
+  /* light theme */
+  --clr-foreground: var(--clr-neutral-700);
+  --clr-background: var(--clr-neutral-100);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* dark theme */
+    --clr-foreground: var(--clr-neutral-100);
+    --clr-background: var(--clr-neutral-700);
+  }
+}
+
+/* Utility Classes*/
+
+.wrapper {
+  width: min(1440px, 100% - 4rem);
+  margin-inline: auto;
+}
+
+.grid {
+  display: grid;
+  gap: var(--grid-spacer, 1rem);
+}
+
+.flex {
+  display: flex;
+  gap: var(--flex-spacer, 1rem);
+}
+
+.ff-primary {
+  font-family: var(--ff-primary);
+}
+
+.ff-secondary {
+  font-family: var(--ff-secondary);
+}
+
+.ff-accent {
+  font-family: var(--ff-accent);
+}
