@@ -1,0 +1,129 @@
+@import url("/css/index.css");
+
+/* main */
+
+/* link button */
+
+.link-btn {
+  width: fit-content;
+  height: fit-content;
+  display: block;
+  color: var(--clr-secondary-400);
+  background-color: transparent;
+  margin: 1rem auto;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid var(--clr-secondary-400);
+}
+
+/* hero */
+
+.hero-section {
+  grid-template-areas:
+    "text"
+    "image"
+    "link";
+}
+
+@media (width > 600px) {
+  .hero-section {
+    grid-template-areas:
+      "text image"
+      "text image"
+      "link image";
+    grid-auto-columns: 1fr;
+  }
+
+  .link-btn {
+    margin: 0;
+  }
+}
+
+.hero-section > *:nth-child(1) {
+  text-align: start;
+  grid-area: text;
+  align-self: start;
+}
+
+.hero-section > *:nth-child(2) {
+  grid-area: image;
+}
+
+.hero-section > *:nth-child(3) {
+  grid-area: link;
+  align-self: start;
+}
+
+.hero-content {
+  --grid-spacer: 1.5rem;
+  text-align: center;
+}
+
+/* avatar */
+
+.hero-avatar {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* hobby section */
+
+/* card */
+
+.cards-container {
+  container-type: inline-size;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+}
+
+.card {
+  --border-radius: 0.5rem;
+  --text-padding: 0.25rem;
+
+  grid-template-columns: 1fr 150px;
+  grid-template-rows: min-content 1fr;
+  grid-template-areas:
+    "title image"
+    "body image";
+  background-color: var(--clr-card-bg);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+}
+
+.card-title {
+  grid-area: title;
+
+  width: fit-content;
+  padding: var(--text-padding);
+  border-radius: var(--border-radius);
+  border: 2px solid transparent;
+
+  background:
+    linear-gradient(var(--clr-background)) padding-box,
+    linear-gradient(145deg, red -100%, blue 170%) border-box;
+}
+
+.card-img {
+  width: 150px;
+  aspect-ratio: 1;
+  align-self: end;
+  grid-area: image;
+}
+
+.card-img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+}
+
+.card-contents {
+  text-align: start;
+  grid-area: body;
+}
+
+.card-content-heading {
+  padding-block-start: 0.5rem;
+}
