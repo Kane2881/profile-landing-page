@@ -5,23 +5,57 @@
 /* link button */
 
 .link-btn {
-  width: fit-content;
-  height: fit-content;
+  max-inline-size: fit-content;
   display: block;
-  color: var(--clr-secondary-400);
   background-color: transparent;
-  margin: 1rem auto;
-  padding: 0.5rem 1.5rem;
-  border: 1px solid var(--clr-secondary-400);
+  padding: 0.75rem 3.5rem;
+  border-radius: 100vw;
+  border: 1px solid transparent;
+  background:
+    conic-gradient(var(--clr-background)) padding-box,
+    linear-gradient(135deg, var(--clr-primary-400), var(--clr-primary-600))
+      border-box;
+
+  &:hover {
+    color: color-mix(
+      in srgb,
+      var(--clr-foreground),
+      var(--clr-primary-100) 25%
+    );
+    background:
+      conic-gradient(hsl(from var(--clr-background) h s l / 0.8)) padding-box,
+      linear-gradient(135deg, var(--clr-primary-400), var(--clr-primary-600))
+        border-box;
+  }
+
+  @media (width < 600px) {
+    margin-inline: auto;
+  }
 }
 
 /* hero */
 
 .hero-section {
+  --grid-spacer: 2rem;
   grid-template-areas:
     "text"
     "image"
     "link";
+}
+
+.hero-section > *:nth-child(1) {
+  text-align: center;
+  grid-area: text;
+  align-self: start;
+}
+
+.hero-section > *:nth-child(2) {
+  grid-area: image;
+}
+
+.hero-section > *:nth-child(3) {
+  grid-area: link;
+  align-self: start;
 }
 
 @media (width > 600px) {
@@ -36,26 +70,10 @@
   .link-btn {
     margin: 0;
   }
-}
 
-.hero-section > *:nth-child(1) {
-  text-align: start;
-  grid-area: text;
-  align-self: start;
-}
-
-.hero-section > *:nth-child(2) {
-  grid-area: image;
-}
-
-.hero-section > *:nth-child(3) {
-  grid-area: link;
-  align-self: start;
-}
-
-.hero-content {
-  --grid-spacer: 1.5rem;
-  text-align: center;
+  .hero-section > *:nth-child(1) {
+    text-align: start;
+  }
 }
 
 /* avatar */
@@ -101,7 +119,7 @@
   border: 2px solid transparent;
 
   background:
-    linear-gradient(var(--clr-background)) padding-box,
+    linear-gradient(var(--clr-card-bg)) padding-box,
     linear-gradient(145deg, red -100%, blue 170%) border-box;
 }
 

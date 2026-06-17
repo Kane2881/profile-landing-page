@@ -1,1 +1,111 @@
 @import url("/css/index.css");
+
+.main-grid-container {
+  padding-block: 2rem;
+  container: main-grid-container / inline-size;
+}
+
+.main-top-grid img {
+  max-inline-size: 250px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(black) padding-box,
+    linear-gradient(90deg, red -50%, blue 150%) border-box;
+}
+
+.main-top-grid {
+  display: grid;
+
+  @container main-grid-container (600px < width < 799px) {
+    --flow-spacer: none;
+    grid-template-areas:
+      "title title"
+      "image text";
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: min-content 1fr;
+    gap: 1.5rem;
+
+    > *:nth-child(1) {
+      grid-area: title;
+    }
+
+    > *:nth-child(2) {
+      grid-area: text;
+    }
+
+    > *:nth-child(3) {
+      grid-area: image;
+    }
+  }
+
+  @container main-grid-container (width > 800px) {
+    grid-template-areas:
+      "title image"
+      "text image";
+    column-gap: 1.5rem;
+
+    > *:nth-child(1) {
+      grid-area: title;
+    }
+
+    > *:nth-child(2) {
+      grid-area: text;
+    }
+
+    > *:nth-child(3) {
+      grid-area: image;
+      max-inline-size: 350px;
+      margin-inline-start: auto;
+    }
+  }
+}
+
+/*@media (600px < width < 799px) {
+  .main-top-grid {
+    --flow-spacer: none;
+    grid-template-areas:
+      "title title"
+      "image text";
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: min-content 1fr;
+    gap: 1.5rem;
+  }
+
+  .main-top-grid > *:nth-child(1) {
+    grid-area: title;
+  }
+
+  .main-top-grid > *:nth-child(2) {
+    grid-area: text;
+  }
+
+  .main-top-grid > *:nth-child(3) {
+    grid-area: image;
+  }
+}
+
+@media (width > 800px) {
+  .main-top-grid {
+    grid-template-areas:
+      "title image"
+      "text image";
+    column-gap: 1.5rem;
+  }
+
+  .main-top-grid > *:nth-child(1) {
+    grid-area: title;
+  }
+
+  .main-top-grid > *:nth-child(2) {
+    grid-area: text;
+  }
+
+  .main-top-grid > *:nth-child(3) {
+    grid-area: image;
+    max-inline-size: 350px;
+    margin-inline-start: auto;
+  }
+}*/
