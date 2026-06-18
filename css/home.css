@@ -82,7 +82,26 @@
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
+}
+
+/* hero image */
+
+.hero-avatar {
+  max-inline-size: 450px;
+  aspect-ratio: 1;
+  object-fit: cover;
   border-radius: 50%;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(black) padding-box,
+    linear-gradient(90deg, red -50%, blue 150%) border-box;
+  @media (width > 600px) {
+    justify-self: end;
+  }
+  @media (width < 600px) {
+    max-inline-size: 250px;
+    justify-self: center;
+  }
 }
 
 /* hobby section */

@@ -43,6 +43,9 @@
   --fs-700: clamp(1.728rem, 1.3274rem + 1.7803vw, 2.9297rem);
   --fs-800: clamp(2.0736rem, 1.5441rem + 2.3533vw, 3.6621rem);
   --fs-900: clamp(2.4883rem, 1.7919rem + 3.0953vw, 4.5776rem);
+
+  --wrapper-max-width: 1440px;
+  --wrapper-padding-inline: 4rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -161,6 +164,10 @@ footer {
   padding-block: 1rem;
 }
 
+p {
+  text-wrap: pretty;
+}
+
 /* logo */
 
 .logo-link {
@@ -175,30 +182,10 @@ footer {
   color: transparent;
 }
 
-/* hero image */
-
-.hero-avatar {
-  max-inline-size: 350px;
-  aspect-ratio: 1;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  background:
-    linear-gradient(black) padding-box,
-    linear-gradient(90deg, red -50%, blue 150%) border-box;
-  @media (width > 600px) {
-    justify-self: end;
-  }
-  @media (width < 600px) {
-    max-inline-size: 250px;
-    justify-self: center;
-  }
-}
-
 /* Utility Classes*/
 
 .wrapper {
-  width: min(1024px, 100% - 4rem);
+  width: min(var(--wrapper-max-width), 100% - var(--wrapper-padding-inline));
   margin-inline: auto;
 }
 
@@ -284,6 +271,11 @@ footer {
   border-bottom: 1px solid var(--clr-section-underline);
 }
 
+.box-shadow {
+  box-shadow: 0 0 0.75rem 0 hsl(from var(--clr-neutral-700) h s l / 0.7);
+  border-radius: 0.5rem;
+}
+
 /* header */
 
 .header {
@@ -296,7 +288,7 @@ footer {
   flex-wrap: wrap;
   color: var(--clr-foreground);
   background-color: var(--clr-background);
-  width: var(--_headerWidth, min(1024px, 100% - 4rem));
+  width: var(--_headerWidth, min(var(--wrapper-max-width), 100% - 4rem));
   margin: 1rem auto;
 
   @supports (animation-timeline: view()) {
@@ -309,7 +301,7 @@ footer {
     animation-range-end: calc(
       100vh + var(--_animationStartsAfter) + var(--_animationDistance)
     );
-    backdrop-filter: blur(1rem);
+    backdrop-filter: blur(0.5rem);
   }
 
   .logo {
@@ -331,7 +323,8 @@ footer {
 
 .nav-link:hover,
 .nav-link:focus-visible {
-  border-bottom: 1px solid var(--clr-foreground);
+  border-bottom: 1px solid;
+  border-color: inherit;
 }
 
 @keyframes stickyNav {
@@ -346,8 +339,10 @@ footer {
 
   100% {
     top: 1rem;
+    color: var(--clr-neutral-100);
     background-color: hsl(from var(--clr-foreground) h s l / 0.05);
     box-shadow: 0 0 0.75rem hsl(0 0% 0% / 0.3);
+    mix-blend-mode: difference;
   }
 }
 
