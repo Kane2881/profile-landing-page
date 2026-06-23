@@ -27,6 +27,7 @@
   --clr-card-bg: var(--clr-neutral-300);
   --clr-hover-mix: hsl(0 0% 95%);
   --full-bleed-bg: var(--clr-primary-300);
+  --clr-workout-section-bg: hsl(220 29% 50%);
 
   --fw-regular: 400;
   --fw-semi-bold: 600;
@@ -57,6 +58,7 @@
     --clr-card-bg: var(--clr-neutral-500);
     --clr-hover-mix: hsl(0 0% 5%);
     --full-bleed-bg: var(--clr-primary-600);
+    --clr-workout-section-bg: hsl(220 29% 28%);
   }
 }
 
@@ -362,6 +364,7 @@ p {
 
 .nav-link:hover,
 .nav-link:focus-visible {
+  color: var(--clr-primary-300);
   border-bottom: 1px solid;
   border-color: inherit;
 }

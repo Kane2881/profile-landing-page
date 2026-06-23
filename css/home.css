@@ -4,28 +4,72 @@
 
 /* link button */
 
+@property --color-1 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: hsl(273, 68%, 59%);
+}
+
+@property --color-2 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: hsl(271 85% 23% / 0.5);
+}
+
 .link-btn {
-  max-inline-size: fit-content;
-  display: block;
-  background-color: transparent;
-  padding: 0.75rem 3.5rem;
-  border-radius: 100vw;
-  border: 1px solid transparent;
-  background:
-    conic-gradient(var(--clr-background)) padding-box,
-    linear-gradient(135deg, var(--clr-primary-400), var(--clr-primary-600))
+  display: inline-block;
+  width: fit-content;
+  padding: 0.75rem 2rem;
+  /*border: 1px solid var(--color-1);*/
+  border-radius: 0.5rem;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  /*&::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--color-1);
+
+    scale: 0 1;
+    transform-origin: right;
+    transition: scale 1000ms;
+  }*/
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    border-radius: inherit;
+    border: 1px solid transparent;
+    background:
+      linear-gradient(var(--clr-background)) padding-box,
+      linear-gradient(135deg, var(--color-1), var(--color-2)) border-box;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    border: 1px solid transparent;
+    background: linear-gradient(135deg, var(--color-1), var(--color-2))
       border-box;
 
-  &:hover {
-    color: color-mix(
-      in srgb,
-      var(--clr-foreground),
-      var(--clr-primary-100) 25%
-    );
-    background:
-      conic-gradient(hsl(from var(--clr-background) h s l / 0.8)) padding-box,
-      linear-gradient(135deg, var(--clr-primary-400), var(--clr-primary-600))
-        border-box;
+    scale: 0 1;
+
+    transform-origin: right;
+    transition: scale 250ms;
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    scale: 1 1;
+    transform-origin: left;
   }
 
   @media (width < 600px) {
@@ -91,10 +135,15 @@
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid transparent;
-  background:
-    linear-gradient(black) padding-box,
-    linear-gradient(90deg, red -50%, blue 150%) border-box;
+  border: 2px solid hsl(0 0% 50%);
+
+  &:hover,
+  &:focus-visible {
+    border: 2px solid transparent;
+    background:
+      linear-gradient(black) padding-box,
+      linear-gradient(90deg, red -50%, blue 150%) border-box;
+  }
   @media (width > 600px) {
     justify-self: end;
   }

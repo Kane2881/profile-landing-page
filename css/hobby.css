@@ -1,8 +1,13 @@
 @import url("/css/index.css");
 
-section {
-  --section-spacing: 2rem;
-  margin-block: var(--section-spacing);
+main > * + * {
+  --main-block-spacing: 3rem;
+  margin-block-start: var(--main-block-spacing);
+}
+
+section,
+footer {
+  padding-block: 0;
 }
 
 .full-bleed {
@@ -11,8 +16,7 @@ section {
 
 .full-bleed > :not(img) {
   padding-inline: calc(var(--wrapper-padding-inline) / 2);
-  padding-block: var(--section-spacing);
-  background: hsl(222 70% 17%);
+  padding-block: var(--main-block-spacing);
 }
 
 @media (width > 800px) {
@@ -49,10 +53,12 @@ section {
 
   .full-bleed > :not(img):first-child {
     grid-column: 2 / 3;
+    padding-inline-start: 0;
   }
 
   .full-bleed > :not(img):last-child {
     grid-column: 3 / 4;
+    padding-inline-end: 0;
   }
 
   .full-bleed > :not(img)::before {
@@ -74,20 +80,104 @@ section {
 /* YouTube */
 
 .youtube {
-  padding: var(--section-spacing);
   border-radius: 2rem;
-  background-color: var(--clr-primary-300);
+  border: 1px solid transparent;
 
   container: youtube-container / inline-size;
 }
 
 .img-grid-container {
   display: grid;
+  gap: 3rem;
+  justify-items: center;
+  align-items: center;
+  padding-block-start: var(--section-spacing);
+
   > img {
-    width: 100%;
-    height: 100%;
     aspect-ratio: 1;
     object-fit: cover;
     border-radius: 50%;
+    border: 2px solid hsl(0 0% 50%);
+  }
+
+  > img:hover,
+  > img:focus-visible {
+    border: 2px solid transparent;
+    background:
+      linear-gradient(var(--clr-background)) padding-box,
+      linear-gradient(135deg, red -50%, blue 150%) border-box;
+  }
+
+  > svg {
+    width: clamp(4.0625rem, 3.4233rem + 2.8409vw, 5.625rem);
+    > path {
+      fill: var(--clr-foreground);
+    }
+  }
+
+  @container youtube-container (width < 600px) {
+    > img {
+      width: 50%;
+    }
+
+    > svg {
+      rotate: 90deg;
+    }
+  }
+
+  @container youtube-container (width > 600px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Dota */
+
+.dota {
+  background: hsl(from var(--clr-primary-100) h s l / 0.2);
+}
+
+/* Workout */
+
+.workout {
+  container: workout-grid-container / inline-size;
+  padding-block-end: var(--main-block-spacing);
+}
+
+.workout-content-grid-container {
+  border-radius: 1rem;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--clr-background)) padding-box,
+    linear-gradient(45deg, var(--clr-primary-600), var(--clr-primary-300))
+      border-box;
+
+  display: grid;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+
+  > :not(img) {
+    padding: 1.5rem;
+  }
+
+  > :not(img) > * + * {
+    margin-block-start: 1.5rem;
+  }
+
+  @container workout-grid-container (width > 800px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "text image";
+
+    > img {
+      grid-area: image;
+    }
+
+    > :not(img) {
+      grid-area: text;
+    }
   }
 }
