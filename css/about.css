@@ -57,7 +57,7 @@
 
     > *:nth-child(3) {
       grid-area: image;
-      max-inline-size: 350px;
+      max-width: 350px;
       margin-inline-start: auto;
     }
   }

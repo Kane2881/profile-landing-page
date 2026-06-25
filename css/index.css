@@ -168,9 +168,9 @@ footer {
   padding-block: 1rem;
 }
 
-p {
+/* p {
   text-wrap: pretty;
-}
+} */
 
 /* logo */
 
@@ -345,7 +345,7 @@ p {
     backdrop-filter: blur(0.5rem);
   }
 
-  .logo {
+  > .logo {
     display: var(--_logoDisplay, block);
   }
 }
@@ -391,13 +391,15 @@ p {
 /* footer */
 
 .footer-section {
-  justify-items: center;
-  align-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (width > 600px) {
   .footer-section {
-    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
