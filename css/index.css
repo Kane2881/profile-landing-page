@@ -345,7 +345,7 @@ footer {
     backdrop-filter: blur(0.5rem);
   }
 
-  > .logo {
+  .logo {
     display: var(--_logoDisplay, block);
   }
 }
